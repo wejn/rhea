@@ -41,6 +41,7 @@
 	<!-- / buildname -->
 
 	<target name="compile" depends="buildname">
+		<mkdir dir="${build.dir}" />
 		<javac srcdir="${src.dir}" debug="true" destdir="${build.dir}" includeantruntime="false">
 			<classpath>
 				<fileset dir="${linux.wowza.lib.dir}">
@@ -99,10 +100,7 @@
 	</target>
 
 	<target name="distclean" depends="clean">
-		<exec executable="sh">
-			<arg value="-c" />
-			<arg value="rm -rf ${build.dir}/com ${build.dir}/cz" />
-		</exec>
+		<delete dir="${build.dir}" />
 	</target>
 
 	<target name="watch">
